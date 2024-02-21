@@ -4,7 +4,7 @@ export const getTasks =  (req, res) => {
 
 
 export const getTask = (req, res) => {
-    res.send("obteniendo una tareas")
+    res.send("obteniendo una tarea")
 }
 
 
@@ -14,9 +14,9 @@ export const createTask =  (req, res) => {
 
 
 export const updateTask =  (req, res) => {
-    res.send("creando tareas")
+    res.send("update tareas")
 }
 
-export const deletegetTask =  (req, res) => {
-    res.send("creando tareas")
+export const deleteTask =  (req, res) => {
+    res.send("borrando tareas")
 }
