@@ -16,7 +16,7 @@ function TaskCard({ task }) {
     <div className='bg-zinc-700 capitalize text-white rounded-md p-4'>
       <header className='flex justify-between'>
         <h2 className='text-sm font-bold'>{task.title}</h2>
-        <span>{task.done == 1 ? "✅" : "❎"}</span>
+        <span>{task.done == 1 ? "✅" : "❌"}</span>
 
       </header>
       <p>{task.description}</p>

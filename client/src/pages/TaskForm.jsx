@@ -3,14 +3,14 @@ import { Form, Formik } from 'formik'
 
 import { UseTask } from '../context/TaskProvider'
 import { useContext, useEffect, useState } from 'react'
-import { useParams,useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function TaskForm() {
     const { createTask, getTask, updateTask } = UseTask()
     const [task, setTask] = useState({
         title: '',
         description: '',
-    
+
     })
 
 
@@ -18,25 +18,24 @@ function TaskForm() {
     const navigate = useNavigate()
     // console.log(params)
 
-    useEffect( () => {
+    useEffect(() => {
         const loadTask = async () => {
             if (params.id) {
                 const task = await getTask(params.id)
                 setTask({
                     title: task.title,
                     description: task.description
-                })}
+                })
+            }
         };
         loadTask()
     }, []);
     return (
-        <div>
-            <h1>
-                {params.id ? 'Edit Task' : 'Create Task'}
-            </h1>
+        <div className='bg-red'>
+
             <Formik
-                initialValues = {task}
-                enableReinitialize = {true}
+                initialValues={task}
+                enableReinitialize={true}
                 onSubmit={async (values, action) => {
                     console.log(values)
                     if (params.id) {
@@ -57,9 +56,12 @@ function TaskForm() {
 
 
                 {({ handleChange, handleSubmit, values, isSubmitting }) => (
-                    <Form onSubmit={handleSubmit}>
+                    <Form className='bg-slate-300 max-w-sm rounded-md p-4 mx-auto mt-10' onSubmit={handleSubmit}>
                         <div>
-                            <label>Title</label>
+                            <h1 className='text-xl font-bold uppercase text-center'>
+                                {params.id ? 'Edit Task' : 'Create Task'}
+                            </h1>
+                            <label className='block'>Title</label>
                             <input
                                 type="text"
                                 id="title"
@@ -67,20 +69,22 @@ function TaskForm() {
                                 placeholder='Write a title'
                                 onChange={handleChange}
                                 value={values.title}
+                                className='px-2 py-1 rounded-sm w-full'
                             />
                         </div>
                         <div>
-                            <label>Description</label>
+                            <label className='block'>Description</label>
                             <textarea
                                 name="description"
                                 rows="3"
                                 placeholder='Write a description'
                                 onChange={handleChange}
                                 value={values.description}
+                                className='px-2 py-1 rounded-sm w-full'
                             ></textarea>
                         </div>
                         <div>
-                            <button type="Submit" disabled={isSubmitting}>
+                            <button type="Submit" disabled={isSubmitting} className='block bg-indigo-500 px-2 py-1 p-2 text-center text-white w-full rounded-md'>
                                 {isSubmitting ? 'Sending' : 'Send'}
                             </button>
                         </div>
