@@ -8,10 +8,14 @@ import { TaskContextProvider } from './context/TaskProvider'
 
 
 
+
+
 function App() {
   return (
     <div className='bg-zinc-900 h-screen'>
+     
       <NavBar />
+      
       <div className="container mx-auto py-4 px-5">
         <TaskContextProvider>
           <Routes>
